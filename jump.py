@@ -47,11 +47,20 @@ def main():
 		return
 
 	child = pexpect.spawn('ssh -p%s %s@%s' % (port, user, ip))
-	child.expect('password:')
-	time.sleep(0.1)
-	child.sendline(password)
 
-	child.interact()
+	index = child.expect(["(?i)yes/no", "(?i)password:", pexpect.EOF, pexpect.TIMEOUT])
+	if (index == 0):
+		child.sendline('yes')
+		child.expect(["(?i)password", pexpect.EOF, pexpect.TIMEOUT])
+		time.sleep(0.1)
+		child.sendline(password)
+		child.interact()
+	elif (index == 1):
+		time.sleep(0.1)
+		child.sendline(password)
+		child.interact()
+	else:
+		print("error")
 
 
 def init_env():
