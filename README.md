@@ -63,6 +63,28 @@ total 24
 Last login: Sat Apr  1 14:34:08 2017 from 10.101.51.15
 [root@kafka39 ~]$ 
 ```
+* step 4: 帮助
+
+> --conf 或者 --env 展示当前所有已配置环境
+
+```
+➜  jumper git:(master) ✗ python3 jump.py dev
+ 
+Last login: Sat Apr  1 14:34:08 2017 from 10.101.51.15
+[root@kafka39 ~]$ 
+
+➜  jumper git:(master) ✗ python3 jump.py --env
+[
+    {
+        "env": "dev",
+        "ip": "10.101.51.15",
+        "password": "passwd",
+        "username": "root"
+    }
+]
+```
+
+
 **强烈建议在自己常用的shell中定义别名**
 
 ```
@@ -75,6 +97,16 @@ alias jumper="python3 /Users/hanruofei/Documents/tools/jumper/jump.py "
 
 Last login: Sat Apr  1 15:20:54 2017 from 10.101.51.15
 [root@kafka39 ~]$ 
+
+➜  ~ jumper --env
+[
+    {
+        "env": "dev",
+        "ip": "10.101.51.15",
+        "password": "passwd",
+        "username": "root"
+    }
+]
 ```
 
 ### 3.版本
